@@ -11,6 +11,7 @@ class Asset extends AbstractApi
 
     public function show(string $address, string $tokenId, array $parameters = []): array
     {
-        return $this->get(sprintf('/asset/%s/%s', rawurlencode($address), rawurlencode($tokenId)), $parameters);
+        $body = $this->get(sprintf('/asset/%s/%s', rawurlencode($address), rawurlencode($tokenId)), $parameters);
+        return json_decode($body, true);
     }
 }
